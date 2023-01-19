@@ -124,8 +124,8 @@ function VerData(eImage) {
     // eImage.style.backgroundColor = ColorRandom()
     // eBack = eImage;
     if (graf) { graf.destroy() }
-    console.log(eImage)
-    localStorage.getItem('token') ? MostarEmpresa(eImage.id) : alert('recuerda estar registrado para ver los datos');
+    let aIntervalo
+    localStorage.getItem('token') ? (MostarEmpresa(eImage.id)) : alert('recuerda estar registrado para ver los datos');
 }
 
 function ColorRandom() {
@@ -157,9 +157,15 @@ function Accion(nombre) {
             },
             body: JSON.stringify(data)
         }).then((response) => response.json())
-        .then((response) => localStorage.setItem('token', response.token))
-        // .catch((err) => console.error(err));
-        // document.getElementById('ingresar').reset();
+        .then((response) => {
+            document.getElementById('mensaje').innerHTML = "<span style='green'>Registrado correctamente</span>"
+            localStorage.setItem('token', response.token)
+        })
+        .catch((err) => {
+            document.getElementById('mensaje').innerHTML = "<span style='red'>Intentalo de nuevo</span>"
+
+        });
+    // document.getElementById('ingresar').reset();
 }
 
 /**
