@@ -13,12 +13,12 @@ function GenerarDatos($id_empresa, $nombreEmpresa) {
     fetch('http://localhost:8000/api/dato/' + $id_empresa, options)
         .then(response => response.json())
         .then(response => {
-            aIntervalo = setInterval(() => {
-                    if (graf) { graf.update() }
-                    SacarDatos(response, $nombreEmpresa)
-                    console.log('cargando....')
-                }, 5000),
-                SacarDatos(response, $nombreEmpresa)
+            // aIntervalo = setInterval(() => {
+            //         if (graf) { graf.update() }
+            //         SacarDatos(response, $nombreEmpresa)
+            //         console.log('cargando....')
+            //     }, 5000),
+            SacarDatos(response, $nombreEmpresa)
         })
         .catch(err => console.error(err));
 }
